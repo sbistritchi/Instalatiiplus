@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+    <id>wcdn_ai_companion</id>
+    <version>1.0</version>
+    <has_icon>Y</has_icon>
+    <priority>999999999</priority>
+    <position>1</position>
+    <default_language>ro</default_language>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+	
+	<authors>
+        <author>
+            <name>[CartSolutions]</name>
+            <email>office@cartsolutions.ro</email>
+            <url>https://cartsolutions.ro</url>
+        </author>
+    </authors>
+	
+	<supplier>CartSolutions</supplier>
+	<supplier_link>https://cartsolutions.ro</supplier_link>
+
+	<translations>
+       <item for="name" lang="ro">[CartSolutions] - AI Companion</item>
+       <item for="description" lang="ro">Genereaza continut in website cu AI</item>
+	   <item for="name" lang="en">[CartSolutions] - AI Companion</item>
+       <item for="description" lang="en">Generate content based on AI responses</item>
+    </translations>
+    <settings>
+        <sections>
+            <section id="general">
+                <items>
+					<item id="openai_api_key">
+						<name>API Key OpenAi</name>
+                        <type>input</type>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    
+    
+     <queries>
+    	<item for="install">
+    	CREATE TABLE `?:ai_content`
+    	(
+			  `content_id` bigint(20) NOT NULL AUTO_INCREMENT,
+			  `product_id` int(11) NOT NULL,
+			  `template_id` int(11) NOT NULL,
+			  `companion_model` varchar(50) NOT NULL,
+			  `request` longtext NOT NULL,
+			  `image_path` varchar(1000) NOT NULL,
+			  `response` longtext NOT NULL,
+			  `status` char(1) NOT NULL,
+			  `applied` char(1) NOT NULL DEFAULT 'N',
+			  `score` int(3) NOT NULL,
+			  `timestamp` double NOT NULL,
+			  PRIMARY KEY (`content_id`),
+			  KEY `product_id` (`product_id`)
+			) ENGINE=InnoDB AUTO_INCREMENT=191 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+    	</item>
+				
+		<item for="install">
+		CREATE TABLE `?:ai_templates` (
+		  `template_id` int(11) NOT NULL AUTO_INCREMENT,
+		  `template_name` varchar(1000) NOT NULL,
+		  `companion_model` varchar(50) NOT NULL DEFAULT 'gpt-3.5-turbo',
+		  `prompt` mediumtext NOT NULL,
+		  `fields_to_include` mediumtext NOT NULL,
+		  `fields_to_generate` mediumtext NOT NULL,
+		  `max_tokens` int(10) NOT NULL DEFAULT 0,
+		  `temperature` decimal(15,1) NOT NULL DEFAULT 0.0,
+		  `top_p` decimal(15,1) NOT NULL DEFAULT 0.0,
+		  `assistant_id` varchar(250) DEFAULT NULL,
+		  PRIMARY KEY (`template_id`)
+		) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+		</item>
+				
+		<item for="uninstall">DROP TABLE `?:ai_templates`;</item>
+		<item for="uninstall">DROP TABLE `?:ai_content`;</item>
+	</queries>
+	
+	<functions>
+		<item for="install">fn_ai_companion_update_language</item>
+	</functions>
+	
+</addon>

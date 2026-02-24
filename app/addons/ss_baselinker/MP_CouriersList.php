@@ -1,0 +1,2 @@
+<?php
+ use Tygh\Registry; use Tygh\Settings; use Tygh\SoftSolid\SsBaselinker\LoggerAddons; use Tygh\SoftSolid\SsBaselinker\LicenseAddons; goto AKM3O; AKM3O: if (defined("\102\x4f\x4f\124\x53\x54\122\101\120")) { goto YjogT; } goto MSLPm; gloKZ: YjogT: goto vLCQO; MSLPm: die("\101\143\x63\145\163\x73\40\x64\145\x6e\151\x65\144"); goto gloKZ; vLCQO: function MP_CouriersList($request) { }

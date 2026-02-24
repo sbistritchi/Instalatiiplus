@@ -1,0 +1,140 @@
+/*******************************************************************************************
+*   ___  _          ______                     _ _                _                        *
+*  / _ \| |         | ___ \                   | (_)              | |              © 2024   *
+* / /_\ | | _____  _| |_/ /_ __ __ _ _ __   __| |_ _ __   __ _   | |_ ___  __ _ _ __ ___   *
+* |  _  | |/ _ \ \/ / ___ \ '__/ _` | '_ \ / _` | | '_ \ / _` |  | __/ _ \/ _` | '_ ` _ \  *
+* | | | | |  __/>  <| |_/ / | | (_| | | | | (_| | | | | | (_| |  | ||  __/ (_| | | | | | | *
+* \_| |_/_|\___/_/\_\____/|_|  \__,_|_| |_|\__,_|_|_| |_|\__, |  \___\___|\__,_|_| |_| |_| *
+*                                                         __/ |                            *
+*                                                        |___/                             *
+* ---------------------------------------------------------------------------------------- *
+* This is commercial software, only users who have purchased a valid license and accept    *
+* to the terms of the License Agreement can install and use this program.                  *
+* ---------------------------------------------------------------------------------------- *
+* website: https://cs-cart.alexbranding.com                                                *
+*   email: info@alexbranding.com                                                           *
+*******************************************************************************************/
+// Scroller list
+
+.mobile-screen, .tablet-screen {
+    .owl-carousel.ty-scroller-list {
+        max-width: 100dvw;
+        overflow: hidden;
+    }
+}
+
+.owl-carousel.ty-scroller-list:not(.grid-list) {
+    padding: 0;
+
+    // Visible only active scroller elements
+    &.active-scroll .owl-item:not(.active) {
+        opacity: 0;
+        transition: opacity 1s ease-out;
+    }
+
+    .ut2_grid_border_base() when (@abt__ut2_product_list_show_grid_border = none) {
+        @media (min-width: 1024px) {
+            width: calc(~'100% + var(--gap)');
+            margin: 0 calc(~'(var(--gap) / 2) * -1');
+        }
+        @media (max-width: 1023px) {
+            min-width: calc(~'100% + (var(--gap) * 2)');
+            margin: 0 calc(~'var(--gap) * -1');
+            padding: 0 calc(~'var(--gap) / 2');
+
+            .owl-wrapper-outer {
+                width: calc(~'100% + (var(--gap) * 2)');
+                margin: 0 calc(~'(var(--gap) / 2) * -1');
+                padding: 0 calc(~'var(--gap) / 2');
+            }
+        }
+    }
+    .ut2_grid_border_base() when (@abt__ut2_product_list_show_grid_border = solid_without_margins) {
+        min-width: calc(~'100% + var(--gap)');
+        margin: 0 calc(~'(var(--gap) / 2) * -1');
+
+        @media (max-width: 1023px) {
+            width: calc(~'100% + (var(--gap) * 2)');
+            margin: 0 calc(~'var(--gap) * -1');
+            padding: 0 calc(~'var(--gap) / 2');
+        }
+
+        .owl-wrapper-outer {
+            @media (max-width: 1023px) {
+                width: calc(~'100% + var(--gap)');
+                margin: 0 calc(~'(var(--gap) / 2) * -1');
+                padding: 0 calc(~'var(--gap) / 2');
+            }
+        }
+    }
+    .ut2_grid_border_base() when (@abt__ut2_product_list_show_grid_border = solid_with_margins) {
+        @media (min-width: 1024px) {
+            width: calc(~'100% + var(--gap-xs)');
+            margin: 0 calc(~'var(--gap-xxs) * -1');
+        }
+        @media (max-width: 1023px) {
+            min-width: calc(~'100% + (var(--gap-s) * 2)');
+            margin: 0 calc(~'var(--gap-s) * -1');
+            padding: 0 var(--gap-xs);
+
+            .owl-wrapper-outer {
+                width: calc(~'100% + (var(--gap-s) * 2)');
+                margin: 0 calc(~'var(--gap-xs) * -1');
+                padding: 0 var(--gap-xs);
+            }
+        }
+    }
+    .ut2_grid_border_base();
+
+    &:not(.grid-list) {
+        .owl-item {
+            padding: 0 calc(~'var(--gap) / 2');
+        }
+
+        // Mask
+        .ut2_product_image_mask() when (@abt__ut2_product_list_mask_images_gallery = true) and (@general_bg_color = #ffffff) {
+            .ut2-w-c-q__buttons {
+                margin: var(--gap-xxs);
+            }
+        }
+        .ut2_product_image_mask();
+    }
+}
+
+.ty-scroller-list__item {
+    position: relative;
+    padding: 0;
+}
+
+.ty-scroller-list__img-block {
+    overflow: hidden;
+
+    .ut2_round() when (@abt__ut2_general_use_rounding = little) {
+        border-radius: calc(var(--border-radius-box) - 2px);
+    }
+    .ut2_round() when (@abt__ut2_general_use_rounding = full) {
+        border-radius: var(--border-radius-box);
+    }
+    .ut2_round();
+
+    // Mask
+    .ut2_product_image_mask() when not (@general_bg_image = transparent) {
+        background: @general_bg_image;
+    }
+    .ut2_product_image_mask() when (@abt__ut2_product_list_mask_images_gallery = true) and (@general_bg_color = #ffffff) {
+        background: lighten(@fill-gray-box, 0.5%);
+
+        .ut2_product_image_mask_bg_ready() when (@general_bg_color = #ffffff) {
+            img.ty-pict {
+                mix-blend-mode: multiply;
+                filter: brightness(1.05);
+            }
+        }
+        .ut2_product_image_mask_bg_ready();
+    }
+    .ut2_product_image_mask();
+}
+
+.ty-scroller-list__description {
+    margin-top: var(--gap-sm);
+}

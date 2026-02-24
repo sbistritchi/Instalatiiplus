@@ -1,0 +1,1 @@
+{style src="addons/wcdn_quickcheckout/styles_2.less"}

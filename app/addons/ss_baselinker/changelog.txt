@@ -1,0 +1,154 @@
+Legend:
+[+] - New feature/improvement
+[*] - Functionality changes
+[!] - Bugfix
+
+Version [1.1.2.6], 16 May 2021
+[+] Dostęp do Baselinket w zależności od planu sprzedawcy
+[+] Dodanie aktualizacji stanów magazynowych z wybranych magazynów
+
+Version [1.1.2.7], 18 May 2021
+
+[+] Funkcja Shop_ProductsQuantity zwraca pustą tablicę jeśli statusy exportowanych produktów są wyłączone
+[*] Drobne poprawki
+[+] Dodanie opcji marketplace
+
+Version [1.1.2.8], 18 June 2021
+
+[+] Dodanie możliwości stworzenie dodatkowego opisu produktu tylko dla Baselinkera
+
+Version [1.1.2.9], 24 June 2021
+
+[+] Dodanie możliwości stworzenie dodatkowej nazwy produktu tylko dla Baselinkera
+
+Version [1.1.3.0], 27 June 2021
+
+[+] Dodanie możliwości filtrowania w logach po dacie stworzenia loga oraz wewnętrznym ID
+[!] Poprawiono zapytania SQL w przypadku instalacji add-ona w sklepie CS-Cart
+[!] Cena promocyjna jest teraz poprawnie aplikowana w funkcjach ProductsPrices i ProductsList
+[*] Pole "Klient chce fakturę" jest teraz synchronizowane w obie strony
+[*] Pole message w loggerze jest polem typu text
+
+Version [1.1.3.1], 22 September 2021
+
+[+] Dodanie możliwości zmiany zawartości pól w zamówieniach wysyłanych do Baselinkera
+[*] Modyfikacja wyglądu menu: zarówno logger jak i customowe pola znajdują się w zakładce Klienci->Baselinker
+
+Version [1.1.3.2], 6 October 2021
+
+[+] Dodanie legendy do menu tworzenia customowych pól
+[!] Drobne poprawki błędów związanych z logiką tworzenia pól
+
+Version [1.1.3.3], 29 October 2021
+
+[!] Poprawka przy dodawaniu zdjęć do wariantów produktów
+
+Version [1.1.3.4], 31 January 2021
+
+[!] Poprawienie błędów związanych z funkcjonalnością magazynów
+[*] Nowa wersja loggera
+
+Version [1.1.3.5], 10 March 2022
+
+[!] Poprawiono błąd z niedziałającym checkboxem w konfiguracji planów sprzedawców.
+
+Version [1.1.3.6], 10 April 2022
+
+[!] Poprawki w logowaniu funkcji
+[+] Dodanie modyfikatora wagi
+
+Version [1.1.3.7], 19 June 2022
+
+[!] Poprawki w krajach
+[!] Inne poprawki
+
+Version [1.1.3.8], 3 September 2022
+[+] Rozszerzono opcje dodatku w magazynach
+[*] Nowe licencjonowanie
+[+] Dodano opcję blokowania pól w konfiguracji sprzedawców
+
+Version [1.1.3.9], 16 September 2022
+[!] Poprawiono błąd który mógł okazjonalnie powodować znaczne zwiększenie obciążenia sklepu.
+[*] Nowa wersja logowania zdarzeń.
+
+Version [1.1.4.0], 4 November 2022
+[+] Dodano możliwość rozszerzenia pola "Miasto" w adresie klienta o dodatkową wartość.
+[!] Poprawiono błąd który mógł powodować błędne pobieranie statusów zamówień.
+
+Version [1.1.4.1], 12 December 2022
+[!] Poprawiono błąd który mógł powodować, że opcja "Eksportuj produkty z wybranymi statusami" była ignorowana.
+[!] Inne poprawki/Other fixes
+
+Version [1.1.4.2], 18 December 2022
+[!] Inne poprawki/Other fixes
+
+Version [1.1.4.3], 24 February 2023
+[!] Poprawki funkcji/Functions fixes
+[+] Dodanie funcji testujących do panelu sprzedawcy w Multi-Vendor/Adding testing functions to the seller panel in Multi-Vendor
+
+Version [1.1.4.4], 29 June 2023
+[!] Poprawki wpisu do tabeli ?:store_locations/Table structure fixes ?:store locations
+[+] Dodanie obsługi funkcji ProductsPriceUpdate, ProductAdd, CategoryAdd
+[*] Rozbicie funkcji na poszczególne pliki
+
+Version [1.1.4.5], 17 July 2023
+[+] Added button to copy links to clipboard
+[!] Transfer of granting rights to install/uninstall functions
+[*] Refactorig code
+
+Version [1.1.4.6], 25 July 2024
+[!] Various minor bugfixes and changes
+[*] Compatibility with new version Store Builder and Multi-Vendor
+[*] Security updates
+[!] Refactoring parts of the code
+[!] Transfer of granting rights to install/uninstall functions
+[+] Add maps for pickup points
+
+Version [1.1.4.7], 15 October 2024
+[+] Added the ability to sent orders from the store to baselinker only with specific statuses
+[+] Method Shop_ProductsData - Added sending of item dimensions to Baselinke
+[*] Compatibility with new version Store Builder and Multi-Vendor
+[*] Security updates
+[!] Refactoring parts of the code
+
+Version [1.1.4.8], 16 October 2024
+[!] Fixed Brand issue in other languages
+[*] Compatibility with new version Store Builder and Multi-Vendor
+[!] Refactoring parts of the code
+
+Version [1.1.4.9], 12 January 2025
+[!] Problem with products with 0 tax rate when synchronizing orders (OrdersGet) - fixed
+[!] Problem with states in delivery and invoice address (OrdersGet) - fixed
+[!] SKU code for for items discount on order (OrdersGet) - fixed
+[+] Added support for custom fields (ProductsData)
+[+] New version connector to upgrade center
+[*] Compatibility with new version Store Builder and Multi-Vendor
+[!] Refactoring parts of the code
+
+Version [1.1.5.0], 25 Ferbuary 2025
+[+] Add EAN code for discount items in order (OrdersGet)
+[+] Add extra_field code for items in order (OrdersGet)
+[+] Added support for "include_variants" option in ProductsList
+[*] Compatibility with new version Store Builder and Multi-Vendor
+[!] Refactoring parts of the code
+
+Version [1.1.5.1], 23 April 2025
+[+] Added the ability to change the delivery point in the order
+[+] Possibility to choose delivery points outside Poland
+[+] Add info about options (OrdersGet)
+[*] Compatibility with new version Store Builder and Multi-Vendor
+[!] Refactoring parts of the code
+[*] Security updates
+
+Version [1.1.5.2], 18 August 2025
+[!] Fix in method for large number of products on the platform (ProductsList)
+[*] Add flag in config.php to disable send images without files on storege (ProductsData.php)
+[!] Fix problem with maps and points pocztex
+[*] Compatibility with new version Store Builder and Multi-Vendor
+[!] Refactoring parts of the code
+[*] Security updates
+
+Version [1.1.5.3], 28 December 2025
+[*] Compatibility with new version Store Builder and Multi-Vendor
+[!] Refactoring parts of the code
+[*] Security updates

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+<id>ab__antibot</id>
+<version>1.1.0</version>
+<priority>2020</priority>
+<position>0</position>
+<status>active</status>
+<default_language>en</default_language>
+<ab>
+<hash>735c0c507b3f4c5d80103dbfb03add68c5c2406e, 2021-06-01 13:18:51</hash>
+<compatibility>
+<dependencies>
+<ab__addons_manager><min>2.3.5</min></ab__addons_manager>
+</dependencies>
+</compatibility>
+</ab>
+<authors>
+<author>
+<name>AlexBranding</name>
+<email>info@alexbranding.com</email>
+<url>https://alexbranding.com</url>
+</author>
+</authors>
+<supplier>AlexBranding</supplier>
+<supplier_link>https://cs-cart.alexbranding.com</supplier_link>
+<supplier_page>ab__am.addons</supplier_page>
+<compatibility>
+<dependencies>ab__addons_manager</dependencies>
+<conflicts>abzh__antibot,ab__so_seohide</conflicts>
+<core_version><min>4.10.1</min></core_version>
+<core_edition>ULTIMATE,MULTIVENDOR</core_edition>
+</compatibility>
+<settings layout="separate" edition_type="ROOT,VENDOR,STOREFRONT">
+<sections>
+<section id="settings">
+<items>
+<item id="code"><type>hidden</type><default_value>ABA-cRkljwkojXeedx5mH8AfW</default_value></item>
+<item id="build"><type>hidden</type><default_value>863</default_value></item>
+</items>
+</section>
+</sections>
+</settings>
+<queries>
+<item for="install">REPLACE INTO ?:privileges (privilege, is_default, section_id, group_id, is_view) VALUES ('ab__antibot.data.manage', 'Y', 'ab__addons', 'ab__antibot', 'N')</item>
+<item for="install">REPLACE INTO ?:privileges (privilege, is_default, section_id, group_id, is_view) VALUES ('ab__antibot.data.view', 'Y', 'ab__addons', 'ab__antibot', 'Y')</item>
+<item for="uninstall">DELETE FROM ?:privileges WHERE section_id = 'ab__antibot' OR group_id = 'ab__antibot'</item>
+<item>
+CREATE TABLE IF NOT EXISTS ?:ab__ab_bots (
+`bot_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+`group_name` varchar(100) NOT NULL DEFAULT '',
+`pattern` varchar(100) NOT NULL DEFAULT '',
+`type` char(1) NOT NULL DEFAULT 'B',
+`status` char(1) NOT NULL DEFAULT 'A',
+PRIMARY KEY (`bot_id`),
+INDEX `type` (`type`),
+INDEX `pattern` (`pattern`)
+) DEFAULT CHARSET=utf8;
+</item>
+</queries>
+<functions>
+<item for="install">fn_ab__ab_install</item>
+<item for="install">fn_ab__ab_add_bot_list</item>
+</functions>
+</addon>

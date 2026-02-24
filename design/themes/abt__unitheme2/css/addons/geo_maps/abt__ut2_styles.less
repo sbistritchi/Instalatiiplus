@@ -1,0 +1,150 @@
+/*******************************************************************************************
+*   ___  _          ______                     _ _                _                        *
+*  / _ \| |         | ___ \                   | (_)              | |              © 2024   *
+* / /_\ | | _____  _| |_/ /_ __ __ _ _ __   __| |_ _ __   __ _   | |_ ___  __ _ _ __ ___   *
+* |  _  | |/ _ \ \/ / ___ \ '__/ _` | '_ \ / _` | | '_ \ / _` |  | __/ _ \/ _` | '_ ` _ \  *
+* | | | | |  __/>  <| |_/ / | | (_| | | | | (_| | | | | | (_| |  | ||  __/ (_| | | | | | | *
+* \_| |_/_|\___/_/\_\____/|_|  \__,_|_| |_|\__,_|_|_| |_|\__, |  \___\___|\__,_|_| |_| |_| *
+*                                                         __/ |                            *
+*                                                        |___/                             *
+* ---------------------------------------------------------------------------------------- *
+* This is commercial software, only users who have purchased a valid license and accept    *
+* to the terms of the License Agreement can install and use this program.                  *
+* ---------------------------------------------------------------------------------------- *
+* website: https://cs-cart.alexbranding.com                                                *
+*   email: info@alexbranding.com                                                           *
+*******************************************************************************************/
+.ty-geo-maps {
+	&-shipping {
+		&__wrapper {
+			margin: 0;
+			border: 0;
+
+			a:not(.ty-btn) {
+				position: relative;
+				white-space: nowrap;
+				padding: 0;
+
+				> span:not(.ty-icon), bdi {
+					.ajx-link();
+					position: relative;
+				}
+
+				> span.ty-icon {
+					font-size: 18px;
+					vertical-align: middle;
+					color: @links;
+				}
+			}
+		}
+		&__title {
+			margin-top: 0;
+		}
+		&__item {
+			padding: var(--gap-xs) 0;
+		}
+		&__label {
+			display: inline;
+			line-height: 145%;
+			color: var(--color-font-lighten);
+			margin-right: 3px;
+		}
+		&__value {
+			display: inline;
+			line-height: 145%;
+		}
+		&__popup {
+			margin-bottom: 0;
+		}
+		&__list.ty-table {
+			margin: var(--gap-xs) 0 0 0;
+			border-top: 1px solid @base;
+
+			tr {
+				border: none;
+			}
+		}
+		&__link-text {
+			border-bottom: 0;
+		}
+	}
+}
+
+.ty-geo-maps-shipping__loader {
+	width: 30px;
+	height: 30px;
+	margin-top: 10px;
+}
+
+.mobile-screen .ty-geo-maps-shipping__wrapper {
+	border: 1px solid @base;
+	padding: var(--gap-s);
+	border-radius: var(--border-radius-box);
+}
+
+.ty-table th.ty-geo-maps-shipping__list-head {
+	padding: var(--gap-xs) var(--gap-xs) var(--gap-xs) 0;
+	color: var(--color-font-lighten);
+	border-bottom-color: @base;
+	font-weight: normal;
+}
+.ty-geo-maps-shipping__list-item:last-child .ty-geo-maps-shipping__list-col {
+	padding: var(--gap-s) var(--gap-xs) var(--gap-xs) 0;
+}
+.ty-geo-maps-shipping__list-city {
+	text-align: left;
+}
+
+.tygh-top-panel {
+	.ty-geo-maps__geolocation {
+		.ty-icon {
+			color: contrast(@top_panel_bg, @links, white);
+		}
+		bdi {
+			color: @top_panel_links;
+		}
+	}
+}
+
+.ty-geo-maps__geolocation {
+	padding: 0;
+
+	.ty-icon-location-arrow {
+		color: var(--color-main);
+	}
+	a {
+		height: @header-t-height;
+		padding: 0 var(--gap-sm);
+	}
+	&__map {
+		margin: 0;
+		width: min(900px, 80vw);
+		height: 433px;
+
+		@media (max-width: 767px), (max-width: 1023px) and (orientation: landscape) and (hover:none) {
+			width: 100%;
+		}
+	}
+}
+.ty-btn.ty-geo-maps__geolocation__set-location {
+	min-width: 100px;
+}
+
+.ab__mb_item-description {
+	.ty-geo-maps {
+		&-shipping {
+			&__wrapper {
+				margin-top: 0;
+			}
+			&__link * {
+				color: @links;
+			}
+			&__title {
+				font-weight: normal;
+			}
+		}
+		&__geolocation a * {
+			color: @links;
+		}
+	}
+}

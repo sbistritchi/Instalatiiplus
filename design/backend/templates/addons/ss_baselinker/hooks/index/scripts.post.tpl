@@ -1,0 +1,1 @@
+{script src="js/addons/ss_baselinker/func.js"}

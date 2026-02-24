@@ -1,0 +1,1 @@
+{script src="js/addons/ab__lazy_load/libs/lazysizes/5.3.2/lazysizes.min.js" no-defer=true}

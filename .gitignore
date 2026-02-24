@@ -1,0 +1,67 @@
+# CS-Cart .gitignore
+
+# Database dumps
+*.sql
+*.sql.gz
+
+# Error logs
+error_log
+php_errors.log
+
+# Cache and compiled files
+/var/cache/
+/var/compiled/
+/var/sess/
+/var/files/
+/var/themes_repository/
+/var/snapshots/
+/var/backups/
+/var/upgrades/
+/var/langs/
+/var/downloads/
+
+# Config local (contains DB credentials)
+config.local.php
+
+# Images (too large for git, managed separately)
+/images/
+
+# Vendor libraries (can be installed via composer)
+/app/lib/vendor/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Blinker request logs
+/blinker/bl_request
+/blinker/error_log
+/blinker/vendor/
+
+# Hostinger files
+.logs/
+.cagefs/
+.cl.selector/
+.dbdumps/
+.filebrowser/
+.wp-cli/
+.ssh/
+.api_token
+.profile
+.bash_history
+
+# Upgrade packages
+/upgrades/
+/var/upgrade/packages/
+
+# Misc
+/web/.ftpquota

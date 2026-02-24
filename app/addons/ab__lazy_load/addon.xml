@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+<id>ab__lazy_load</id>
+<version>1.0.2</version>
+<priority>190000</priority>
+<position>0</position>
+<status>active</status>
+<default_language>en</default_language>
+<ab>
+<hash>78dd4c9381165e5a8412f19a662054c412200dfa, 2022-07-05 11:36:32</hash>
+<compatibility>
+<dependencies>
+<ab__addons_manager><min>2.5.0</min></ab__addons_manager>
+<abt__unitheme2><min>4.13.2.b</min></abt__unitheme2>
+<abt__youpitheme><min>4.13.2.c</min></abt__youpitheme>
+</dependencies>
+</compatibility>
+</ab>
+<authors>
+<author>
+<name>AlexBranding</name>
+<email>info@alexbranding.com</email>
+<url>https://alexbranding.com</url>
+</author>
+</authors>
+<supplier>AlexBranding</supplier>
+<supplier_link>https://cs-cart.alexbranding.com</supplier_link>
+<supplier_page>ab__am.addons</supplier_page>
+<compatibility>
+<conflicts></conflicts>
+<dependencies>ab__addons_manager</dependencies>
+<core_version><min>4.13.1</min></core_version>
+<core_edition>ULTIMATE,MULTIVENDOR</core_edition>
+</compatibility>
+<settings layout="separate" edition_type="ROOT,VENDOR,STOREFRONT">
+<sections>
+<section id="settings">
+<items>
+<item id="expand_height">
+<type>input</type>
+<default_value>350</default_value>
+</item>
+<item id="expand_width">
+<type>input</type>
+<default_value>150</default_value>
+</item>
+<item id="placeholder_image">
+<type>template</type>
+<default_value>placeholder_images.tpl</default_value>
+</item>
+<item id="code"><type>hidden</type><default_value>ABA-MJAaqmKBnFFu6a3fTT07V</default_value></item>
+<item id="build"><type>hidden</type><default_value>1051</default_value></item>
+</items>
+</section>
+</sections>
+</settings>
+<queries>
+<item for="install">REPLACE INTO ?:privileges (privilege, is_default, section_id, group_id, is_view) VALUES ('ab__lazy_load.data.manage', 'Y', 'ab__addons', 'ab__lazy_load', 'N')</item>
+<item for="install">REPLACE INTO ?:privileges (privilege, is_default, section_id, group_id, is_view) VALUES ('ab__lazy_load.data.view', 'Y', 'ab__addons', 'ab__lazy_load', 'Y')</item>
+<item for="uninstall">DELETE FROM ?:privileges WHERE section_id = 'ab__lazy_load' OR group_id = 'ab__lazy_load'</item>
+</queries>
+</addon>

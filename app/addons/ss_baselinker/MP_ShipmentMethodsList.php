@@ -1,0 +1,2 @@
+<?php
+ use Tygh\Registry; use Tygh\Settings; use Tygh\SoftSolid\SsBaselinker\LoggerAddons; use Tygh\SoftSolid\SsBaselinker\LicenseAddons; goto i3rRk; i3rRk: if (defined("\102\x4f\x4f\x54\123\124\122\x41\x50")) { goto Ty39d; } goto ftsN1; ftsN1: die("\x41\x63\143\x65\163\163\x20\x64\x65\156\151\x65\x64"); goto yA5jP; yA5jP: Ty39d: goto wYQP3; wYQP3: function MP_ShipmentMethodsList($request) { }

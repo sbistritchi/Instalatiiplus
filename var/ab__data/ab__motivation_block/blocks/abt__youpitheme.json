@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Our advantages",
+    "position": 100,
+    "icon_type": "icon",
+    "icon_class": "material-icons new_releases",
+    "icon_color": "#999999",
+    "description": "<ul><li>— 12 months warranty <span class=\"cm-tooltip\" title=\"Guarantee for all products in our store is 12 months.\"><i class=\"ty-icon-help-circle\"></i></span></li><li>— SMS notification <span class=\"cm-tooltip\" title=\"You receive SMS messages about each stage of your order.\"><i class=\"ty-icon-help-circle\"></i></span></li><li>— Return and exchange <span class=\"cm-tooltip\" title=\"You can return the items purchased within 14 days. The goods must be in normal condition and have all the factory packages.\"><i class=\"ty-icon-help-circle\"></i></span></li><li>— Different payment methods <span class=\"cm-tooltip\" title=\"Pay orders in convenient ways: cash to the courier, by bank transfer on the receipt of the bank or by credit card right at the time of the order.\"><i class=\"ty-icon-help-circle\"></i></span></li><li>— Best price <span class=\"cm-tooltip\" title=\"We are proud of our prices, hundreds of customers check them every day, which give a choice to our online store!\"><i class=\"ty-icon-help-circle\"></i></span></li></ul>",
+    "expanded_desktop": "Y",
+    "expanded_tablet": "Y",
+    "expanded_mobile": "Y",
+    "categories_ids": "",
+    "destination_ids": "",
+    "template_path": "addons/ab__motivation_block/blocks/components/item_templates/custom_content.tpl",
+    "ru": {
+      "name": "Наши преимущества",
+      "description": "<ul><li>— Гарантия 12 месяцев <span class=\"cm-tooltip\" title=\"Гарантия на все купленные товары в нашем инетрнет магазине составляет 12 месяцев.\"><i class=\"ty-icon-help-circle\"></i></span></li><li>— Оповещение по SMS <span class=\"cm-tooltip\" title=\"Вы получаете SMS сообщения о каждой стадии вашего заказа.\"><i class=\"ty-icon-help-circle\"></i></span></li><li>— Возврат и обмен <span class=\"cm-tooltip\" title=\"Вы можете вернуть купленные товары в течение 14 дней. Товар должнен быть в нормальном состоянии и иметь все заводские упаковки.\"><i class=\"ty-icon-help-circle\"></i></span></li><li>— Различные способы оплаты <span class=\"cm-tooltip\" title=\"Оплачивайте товары удобными вам способами: наличными курьеру, безналично по квитанции банка или кредитной картой прямо в момент заказа.\"><i class=\"ty-icon-help-circle\"></i></span></li><li>— Лучшая цена <span class=\"cm-tooltip\" title=\"Мы гордимся нашими ценами, их каждый день проверяют сотни клиентов, которые отдают выбор нашему интернет - магазину!\"><i class=\"ty-icon-help-circle\"></i></span></li></ul>"
+    }
+  },
+  {
+    "name": "Payment options",
+    "position": 110,
+    "icon_type": "icon",
+    "icon_class": "material-icons account_balance_wallet",
+    "icon_color": "#999999",
+    "description": "<ul><li>— Cash on delivery</li><li>— Visa and MasterCard</li><li>— Сashless payments</li><li>— Invoices</li></ul>",
+    "expanded_desktop": "N",
+    "expanded_tablet": "N",
+    "expanded_mobile": "N",
+    "categories_ids": "",
+    "destination_ids": "",
+    "template_path": "addons/ab__motivation_block/blocks/components/item_templates/custom_content.tpl",
+    "ru": {
+      "name": "Варианты оплаты",
+      "description": "<ul><li>— Наличными при получении</li><li>— Картами Visa и MasterCard</li><li>— Оплата по счету</li><li>— Безналичный расчет <span class=\"cm-tooltip\" title=\"Только для юридических лиц\"><i class=\"ty-icon-help-circle\"></i></span></li></ul>"
+    }
+  },
+  {
+    "name": "Delivery",
+    "position": 120,
+    "icon_type": "icon",
+    "icon_class": "material-icons local_shipping",
+    "icon_color": "#999999",
+    "description": "<ul><li>— For USA - $10</li><li>— Worldwide - from $30</li></ul>",
+    "expanded_desktop": "N",
+    "expanded_tablet": "N",
+    "expanded_mobile": "N",
+    "categories_ids": "",
+    "destination_ids": "",
+    "template_path": "addons/ab__motivation_block/blocks/components/item_templates/custom_content.tpl",
+    "ru": {
+      "name": "Доставка",
+      "description": "<ul><li>— В пределах МКАД - 200 руб.</li><li>— За пределами МКАД - 200 руб. + 25 руб./км</li></ul>"
+    }
+  },
+  {
+    "name": "Find similar",
+    "status": "D",
+    "position": 130,
+    "icon_type": "icon",
+    "icon_class": "material-icons beenhere",
+    "icon_color": "#999999",
+    "description": "",
+    "expanded_desktop": "N",
+    "expanded_tablet": "N",
+    "expanded_mobile": "N",
+    "categories_ids": "",
+    "destination_ids": "",
+    "template_path": "addons/ab__motivation_block/blocks/components/item_templates/product_categories_list.tpl",
+    "ru": {
+      "name": "Найдите похожие"
+    }
+  }
+]

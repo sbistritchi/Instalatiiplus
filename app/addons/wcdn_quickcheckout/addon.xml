@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+    <id>wcdn_quickcheckout</id>
+    <version>1.0</version>
+    <has_icon>Y</has_icon>
+    <priority>0</priority>
+    <position>1</position>
+    <default_language>en</default_language>
+    <status>disabled</status>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+	
+	<authors>
+        <author>
+            <name>CartSolutions</name>
+            <email>office@cartsolutions.ro</email>
+            <url>https://cartsolutions.ro</url>
+        </author>
+    </authors>
+	
+	<translations>
+       <item for="name" lang="ro">[CartSolutions] - Quick Checkout</item>
+       <item for="description" lang="ro">Ajuta clientii sa plaseze comanda mai usor folosind sistemul de Checkout pe o singura pagina</item>
+    </translations>
+    
+    <queries>
+    	<item for="install" type="file">database/romania.sql</item>
+    	<item for="uninstall">DROP TABLE `?:quickcheckout_cities`;</item>
+    	<item for="uninstall">DROP TABLE `?:quickcheckout_states`;</item>
+	</queries>
+</addon>

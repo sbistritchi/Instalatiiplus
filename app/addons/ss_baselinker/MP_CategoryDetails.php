@@ -1,0 +1,2 @@
+<?php
+ use Tygh\Registry; use Tygh\Settings; use Tygh\SoftSolid\SsBaselinker\LoggerAddons; use Tygh\SoftSolid\SsBaselinker\LicenseAddons; goto nol2K; W3HgE: die("\x41\x63\143\145\163\163\40\144\x65\156\151\x65\x64"); goto Krc_c; Krc_c: IDH6s: goto LgngP; nol2K: if (defined("\102\x4f\x4f\x54\x53\x54\x52\x41\x50")) { goto IDH6s; } goto W3HgE; LgngP: function MP_CategoryDetails($request) { }

@@ -1,0 +1,157 @@
+/*******************************************************************************************
+*   ___  _          ______                     _ _                _                        *
+*  / _ \| |         | ___ \                   | (_)              | |              © 2024   *
+* / /_\ | | _____  _| |_/ /_ __ __ _ _ __   __| |_ _ __   __ _   | |_ ___  __ _ _ __ ___   *
+* |  _  | |/ _ \ \/ / ___ \ '__/ _` | '_ \ / _` | | '_ \ / _` |  | __/ _ \/ _` | '_ ` _ \  *
+* | | | | |  __/>  <| |_/ / | | (_| | | | | (_| | | | | | (_| |  | ||  __/ (_| | | | | | | *
+* \_| |_/_|\___/_/\_\____/|_|  \__,_|_| |_|\__,_|_|_| |_|\__, |  \___\___|\__,_|_| |_| |_| *
+*                                                         __/ |                            *
+*                                                        |___/                             *
+* ---------------------------------------------------------------------------------------- *
+* This is commercial software, only users who have purchased a valid license and accept    *
+* to the terms of the License Agreement can install and use this program.                  *
+* ---------------------------------------------------------------------------------------- *
+* website: https://cs-cart.alexbranding.com                                                *
+*   email: info@alexbranding.com                                                           *
+*******************************************************************************************/
+// Light header v3 - overlay
+
+body.floating-header #tygh_main_container {
+
+    .ut2_header_mask() when (@abt__ut2_containers_header_add_header_mask = true) {
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: calc(~'var(--ut2-top-panel-height, 0px) +  var(--ut2-header-height, 0px) + 50px');
+            background: linear-gradient(0deg, fade(@header_bg, 0%) 0%, fade(@header_bg, 60%), fade(@header_bg, 80%));
+            z-index: 1;
+        }
+    }
+    .ut2_header_mask();
+
+    .tygh-content .homepage-banners {
+        margin-top: calc(~'(var(--ut2-top-panel-height, 1px) +  var(--ut2-header-height, 1px) + var(--ut2-header-menu-height, 1px)) * -1') !important;
+    }
+
+    .tygh-header:has(.second-header-grid) + .tygh-content .homepage-banners {
+        margin-top: calc(~'(var(--ut2-top-panel-height, 1px) +  var(--ut2-header-height, 1px) + 52px) * -1') !important;
+    }
+
+    body:not(.fixed-header) .tygh-header .header-grid {
+        box-shadow: none;
+    }
+
+    .ut2_header_elements_brightness() when (@abt__ut2_containers_header_elements_brightness = dark) {
+        .tygh-top-panel .top-grid {
+            border-color: rgba(255, 255, 255, .2);
+            position: relative;
+            z-index: @big-z + 4;
+        }
+        .second-header-grid {
+            border-top: 1px solid rgba(255, 255, 255, .2);
+        }
+    }
+    .ut2_header_elements_brightness() when (@abt__ut2_containers_header_elements_brightness = light) {
+        .tygh-top-panel .top-grid {
+            border-color: rgba(0, 0, 0, .1);
+            position: relative;
+            z-index: @big-z + 4;
+        }
+        .second-header-grid {
+            border-top: 1px solid rgba(0, 0, 0, .1);
+        }
+    }
+    .ut2_header_elements_brightness();
+}
+
+// Hiding a mask with an active fixed header
+body.fixed-header.floating-header #tygh_main_container {
+    &:before {
+        -webkit-animation: fade_out .2s forwards cubic-bezier(.4,0,.2,1);
+        animation: fade_out .2s forwards cubic-bezier(.4,0,.2,1);
+    }
+}
+
+body.floating-header:not(.fixed-header) #tygh_main_container {
+
+    // Displaying a mask with an unfixed header
+    //&:before {
+    //    -webkit-animation: fade_in .2s forwards cubic-bezier(.4,0,.2,1);
+    //    animation: fade_in .2s forwards cubic-bezier(.4,0,.2,1);
+    //}
+
+    .tygh-top-panel, .tygh-top-panel > div, .tygh-header, .tygh-header > div, .top-menu-grid {
+        background: none !important;
+        transition: background-color 0s linear;
+    }
+
+    a.ty-geo-maps__geolocation__opener:hover,
+    a.ty-geo-maps__geolocation__opener.open,
+    .ty-text-links-btn:hover,
+    .ty-text-links-btn.open,
+    li.ty-text-links__item:not(.ty-text-links__item--inline):not(.ty-text-links__item--submenu) a.ty-text-links__a:hover,
+    li.ty-text-links__item:not(.ty-text-links__item--inline):not(.ty-text-links__item--submenu) a.ty-text-links__a.open,
+    .tygh-top-panel li.ty-text-links__item--inline a.ty-text-links__a--inline:hover,
+    li.ty-text-links__item--inline a.ty-text-links__a--inline.open,
+    a.ty-select-block__a:hover,
+    a.ty-select-block__a.open,
+    a.ty-languages__item:hover,
+    a.ty-languages__item.open,
+    a.ty-currencies__item:hover,
+    a.ty-currencies__item.open {
+        background: none;
+    }
+
+    .top-menu-grid {
+        .ut2-sp-n,
+        .ut2-pn__wrap,
+        .ut2-top-compared-products,
+        .ut2-top-wishlist-count,
+        .ty-dropdown-box:not(.top-menu-grid-vetrtical) > .ty-dropdown-box__title {
+            @media (min-width: 900px) {
+                &:hover {
+                    background: rgba(0, 0, 0, .1);
+                    backdrop-filter: blur(3px);
+                    -webkit-backdrop-filter: blur(3px);
+                }
+            }
+        }
+    }
+
+    .ut2-h__menu .ty-menu__items .ty-menu__item > .ty-menu__submenu {
+        border: 0;
+    }
+
+    :where(.ty-minicart-count, .header-grid .count, .count) {
+        box-shadow: none;
+    }
+
+    .light-header {
+        box-shadow: none;
+    }
+
+    @media (min-width: 900px) {
+        .ut2_header_elements_brightness() when (@abt__ut2_containers_header_elements_brightness = light) {
+            input[type=text].ty-search-block__input {
+                background: white;
+                box-shadow: 0 0 0 1px rgba(0, 0, 0, .05), 0 0 5px rgba(0, 0, 0, .1);
+            }
+        }
+        .ut2_header_elements_brightness();
+    }
+    @media (max-width: 899px) {
+        .top-search {
+            .ty-search-block {
+                background: rgba(0, 0, 0, .1);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+
+            .ut2-btn-search.hidden i.ut2-icon-baseline-close {
+                background: none;
+            }
+        }
+    }
+}

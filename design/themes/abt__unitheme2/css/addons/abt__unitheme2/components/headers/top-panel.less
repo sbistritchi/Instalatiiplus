@@ -1,0 +1,910 @@
+/*******************************************************************************************
+*   ___  _          ______                     _ _                _                        *
+*  / _ \| |         | ___ \                   | (_)              | |              © 2024   *
+* / /_\ | | _____  _| |_/ /_ __ __ _ _ __   __| |_ _ __   __ _   | |_ ___  __ _ _ __ ___   *
+* |  _  | |/ _ \ \/ / ___ \ '__/ _` | '_ \ / _` | | '_ \ / _` |  | __/ _ \/ _` | '_ ` _ \  *
+* | | | | |  __/>  <| |_/ / | | (_| | | | | (_| | | | | | (_| |  | ||  __/ (_| | | | | | | *
+* \_| |_/_|\___/_/\_\____/|_|  \__,_|_| |_|\__,_|_|_| |_|\__, |  \___\___|\__,_|_| |_| |_| *
+*                                                         __/ |                            *
+*                                                        |___/                             *
+* ---------------------------------------------------------------------------------------- *
+* This is commercial software, only users who have purchased a valid license and accept    *
+* to the terms of the License Agreement can install and use this program.                  *
+* ---------------------------------------------------------------------------------------- *
+* website: https://cs-cart.alexbranding.com                                                *
+*   email: info@alexbranding.com                                                           *
+*******************************************************************************************/
+@header-height: var(--ut2-header-height); // header center
+@header-bm-height: 44px; // header minimal
+@header-b-height: 50px; // header bottom
+@header-bb-height: 56px; // header bottom big
+@header-full-height: @header-t-height + @header-height + @header-b-height;
+
+
+
+/*##############################################################################
+   [[[[[ BEGIN ]]]]] Top Panel region
+##############################################################################*/
+
+/*==============================================================================
+   [[[[ BEGIN ]]]] mixin & vars :: Top Panel region
+==============================================================================*/
+@header-t-height: var(--ut2-top-panel-height, 0px); // header top
+
+.mxn--top-panel-_bg-color_-hover() when (@top_panel_bg = @general_bg_color) {
+    //background: contrast(@top_panel_bg, @base, rgba(255, 255, 255, 0.2));
+    @media (max-width: 1024px) {
+        background: none;
+    }
+    @media (min-width: 1025px) {
+        background: contrast(@top_panel_bg, @fill-gray-box, darken(@top_panel_bg, 3%));
+    }
+}
+.mxn--top-panel-_bg-color_-hover() when not (@top_panel_bg = @general_bg_color) {
+    @media (max-width: 1024px) {
+        background: none;
+    }
+    @media (min-width: 1025px) {
+        background: contrast(@top_panel_bg, rgba(0, 0, 0, .07), rgba(255, 255, 255, .2));
+    }
+}
+
+.mxn--top-panel-_text-color_-active-hover-opened() {
+    color: contrast(@top_panel_bg, @font, white);
+}
+
+.mxn--top-panel-dropdown-_bg-color_-hover() when (@top_panel_bg = @general_bg_color) {
+    @media (max-width: 1024px) {
+        background: none;
+    }
+    @media (min-width: 1025px) {
+        background: var(--fill-gray);
+    }
+}
+.mxn--top-panel-dropdown-_bg-color_-hover() when not (@top_panel_bg = @general_bg_color) {
+    @media (max-width: 1024px) {
+        background: none;
+    }
+    @media (min-width: 1025px) {
+        background: var(--fill-gray);
+    }
+}
+
+.mxn--top-panel-dropdown-_text-color() {
+    color: contrast(@general_bg_color, @font, white);
+}
+
+.mxn--top-panel-dropdown-_text-color_-active() {
+    color: contrast(@general_bg_color, @lighten-font, rgba(255, 255, 255, 0.75));
+}
+
+.mxn--top-panel-dropdown-_text-color_-hover() {
+    color: contrast(@general_bg_color, @font, white);
+}
+
+.mxn--top-panel-_border-color() when (@top_panel_bg = @general_bg_color) {
+    border-color: contrast(@top_panel_bg, @base, rgba(255, 255, 255, .2));
+}
+.mxn--top-panel-_border-color() when not (@top_panel_bg = @general_bg_color) {
+    border-color: contrast(@top_panel_bg, rgba(0, 0, 0, .07), rgba(255, 255, 255, .2));
+}
+
+@var--top-panel-link-btn-_padding-inline: var(--gap-xs);
+
+/* [[[[ END ]]]] mixin & vars :: Top Panel region
+==============================================================================*/
+
+
+
+
+
+/*==============================================================================
+   [[[[ BEGIN ]]]] general wrappers
+==============================================================================*/
+
+.tygh-top-panel {
+    .top-grid { // container
+        border-block-end-width: 1px;
+        border-block-end-style: solid;
+        .mxn--top-panel-_border-color();
+
+        &::before,
+        &::after {
+            content: none;
+        }
+
+        &.container-fluid-row-no-limit > .row-fluid {
+            padding: 0 var(--gap-s);
+        }
+
+        & > [class^=container]:last-child > .row-fluid, &[class^=container] > .row-fluid { // sections wrapper
+            width: auto;
+            height: var(--ut2-top-panel-height, 0px);
+            max-height: @header-t-height * 2 + 1;
+            display: flex;
+            flex-flow: row wrap;
+            column-gap: var(--gap-xs);
+            row-gap: 1px;
+            justify-content: flex-end;
+
+            @media (max-width: 1023px) {
+                column-gap: var(--gap-s);
+            }
+
+            &::before,
+            &::after {
+                content: none;
+            }
+
+            .row-fluid {
+                display: contents;
+
+                &::before,
+                &::after {
+                    content: none;
+                }
+            }
+        }
+
+        [class*="span"] {
+            float: none;
+            min-height: 0;
+            width: auto;
+            margin: 0;
+
+            &:not(.top-grid-location):not(.top-links-grid) {
+                display: contents;
+            }
+
+            &.top-grid-location,
+            &.top-links-grid {
+                display: flex;
+                flex-flow: row wrap;
+                column-gap: var(--gap-sm);
+
+                @media (max-width: 834px) {
+                    column-gap: var(--gap-xs);
+                }
+                @media (max-width: 640px) {
+                    column-gap: var(--gap-xxs);
+                }
+            }
+
+            &.top-grid-location {
+                margin-inline-end: auto;
+                flex-shrink: 0;
+            }
+
+            &.top-links-grid {
+                display: contents;
+                flex-shrink: 1;
+            }
+
+            // reset
+            .ty-float-left,
+            .ty-float-right {
+                //float: none;
+                max-width: none;
+            }
+        }
+    }
+}
+/* [[[[ END ]]]] general wrappers
+==============================================================================*/
+
+
+
+
+
+/*==============================================================================
+   [[[[ BEGIN ]]]] generalizing/grouping link & text rules
+==============================================================================*/
+.tygh-top-panel {
+    // caption + links (except dropdown)
+    a.ty-geo-maps__geolocation__opener, // geolocation
+    .ty-text-links-btn, // quick links all dropdown head
+    li.ty-text-links__item:not(.ty-text-links__item--inline):not(.ty-text-links__item--submenu) a.ty-text-links__a, // inline quick links (plain-list mode)
+    li.ty-text-links__item--inline a.ty-text-links__a--inline, // inline quick (links dropdown mode)
+    .ty-select-block__txt, // languages+currencies caption text
+    a.ty-select-block__a, // languages+currencies dropdown head
+    a.ty-languages__item, // languages (plain-list mode)
+    a.ty-currencies__item // currencies (plain-list mode)
+    {
+        padding: 0;
+        border: 0 none;
+        border-radius: 0;
+        float: none;
+        height: @header-t-height;
+        white-space: nowrap;
+        flex: 0 0 auto;
+        display: flex;
+        align-content: center;
+        align-items: center;
+    }
+
+    .ty-select-block__txt // languages+currencies caption text
+    {
+        color: @top_panel_text;
+    }
+
+    // links (except dropdown)
+    a.ty-geo-maps__geolocation__opener, // geolocation
+    .ty-text-links-btn, // quick links all dropdown head
+    li.ty-text-links__item:not(.ty-text-links__item--inline):not(.ty-text-links__item--submenu) a.ty-text-links__a, // inline quick links (plain-list mode)
+    li.ty-text-links__item--inline a.ty-text-links__a--inline, // inline quick links (dropdown mode)
+    a.ty-select-block__a, // languages+currencies dropdown head
+    a.ty-languages__item, // languages (plain-list mode)
+    a.ty-currencies__item // currencies (plain-list mode)
+    {
+        user-select: none;
+        text-decoration: none;
+        color: @top_panel_links;
+        padding-block: 0;
+
+        @media (min-width: 1025px) {
+            padding-inline: @var--top-panel-link-btn-_padding-inline;
+        }
+
+        &:hover,
+        &.open,
+        &.open:hover {
+            text-decoration: none;
+            .mxn--top-panel-_text-color_-active-hover-opened();
+            .mxn--top-panel-_bg-color_-hover();
+
+        }
+    }
+    li.ty-text-links__item--inline.ty-text-links__subitems.ty-level-0:hover a.ty-text-links__a--subitems // inline quick links dropdown head
+    {
+        @media (min-width: 1025px) {
+            .no-touch & {
+                .mxn--top-panel-_text-color_-active-hover-opened();
+                .mxn--top-panel-_bg-color_-hover();
+            }
+        }
+    }
+
+    // active|current link (except dropdown)
+    li.ty-text-links__item:not(.ty-text-links__item--inline):not(.ty-text-links__item--submenu).active a.ty-text-links__a, // inline quick links (plain-list mode)
+    li.ty-text-links__item--inline.active a.ty-text-links__a--inline, // inline quick links (dropdown mode)
+    a.ty-currencies__active, // currencies (plain-list mode)
+    a.ty-languages__active // languages (plain-list mode)
+    {
+        text-decoration: none;
+        background: initial;
+        .mxn--top-panel-_text-color_-active-hover-opened();
+
+        &:hover {
+            .mxn--top-panel-_bg-color_-hover();
+        }
+    }
+
+    // arrow icon
+    .ty-text-links-btn .ty-icon.ty-text-links-btn__arrow, // quick links all dropdown head
+    .ty-select-block__a .ty-icon.ty-select-block__arrow // languages+currencies dropdown head
+    {
+        font-family: 'uni2-icons', sans-serif;
+        font-size: 16px;
+        line-height: 1;
+        color: @top_panel_text;
+        opacity: 1;
+        transform: none;
+        width: auto;
+        margin: 0;
+        margin-inline-start: 2px;
+        margin-inline-end: -4px;
+        position: static;
+    }
+}
+/* [[[[ END ]]]] generalizing/grouping link & text rules
+==============================================================================*/
+
+
+
+
+
+/*==============================================================================
+   [[[[ BEGIN ]]]] geolocation
+==============================================================================*/
+.tygh-top-panel {
+    .ty-geo-maps__geolocation {
+        .ty-icon {
+            color: contrast(@top_panel_bg, @font, white);
+        }
+    }
+
+    .ty-geo-maps__geolocation__opener-text {
+        overflow: visible;
+    }
+
+    [class*="span"]:first-child {
+        .ty-geo-maps__geolocation {
+            margin-inline-start: calc(~'(var(--gap-xs) - @{var--top-panel-link-btn-_padding-inline}) * -1');
+        }
+    }
+}
+/* [[[[ END ]]]] geolocation
+==============================================================================*/
+
+
+
+
+
+/*==============================================================================
+   [[[[ BEGIN ]]]] dropdown
+==============================================================================*/
+.tygh-top-panel .top-links-grid // raise priority
+{
+    .mxn--top-panel__dropdown() {
+        animation: none !important;
+        position: absolute;
+        z-index: @z-index + 4;
+        top: 100% !important;
+        right: calc(~'var(--border-radius-box) * -1') !important;
+        left: auto !important;
+        border-radius: var(--border-radius-box) !important;
+        min-width: calc(~'100% + var(--border-radius-box) * 2');
+        max-width: @fluidContainerMinWidth;
+        overflow: visible; // for angle
+        padding: var(--gap-xxs);
+        margin: 0;
+        border: 0 none;
+        background: @general_bg_color;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 10px 15px 0 rgba(0, 0, 0, 0.3);
+        .caret(14px, 24px, @general_bg_color, rgba(0, 0, 0, 0.1));
+        //display: block !important; // debug line
+        display: block;
+        flex-direction: column;
+
+        &::before,
+        &::after {
+            right: calc(~'var(--border-radius-box) + @{var--top-panel-link-btn-_padding-inline} - 3px'); // + 1px - 4px
+        }
+    }
+    .mxn--top-panel__dropdown__link() {
+        user-select: none;
+        text-decoration: none;
+        background: initial;
+        .mxn--top-panel-dropdown-_text-color();
+        border-radius: var(--border-radius-box);
+        padding: 0;
+        padding-block: 7px;
+        padding-inline: @var--top-panel-link-btn-_padding-inline;
+        height: auto;
+        width: max-content;
+        min-width: 100%;
+        max-width: 100%;
+        display: flex;
+
+        &:hover {
+            text-decoration: none;
+            .mxn--top-panel-dropdown-_bg-color_-hover();
+            .mxn--top-panel-dropdown-_text-color_-hover();
+        }
+
+        &::before,
+        &::after {
+            content: none;
+        }
+    }
+
+    li.ty-text-links__item--inline.ty-text-links__subitems > ul.ty-text-links, // inline quick links (dropdown mode) popup list
+    .ty-select-block // languages+currencies
+    {
+        .mxn--top-panel__dropdown();
+    }
+
+    // quick links all (list level 0)
+    .top-quick-links .ty-text-links-wrapper > ul.ty-text-links // raise priority
+    {
+        @media (max-width: 1024px) {
+            .mxn--top-panel__dropdown();
+        }
+    }
+
+    ul.ty-select-block__list // languages+currencies
+    {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    // list item
+    li.ty-text-links__subitems.ty-text-links__item--inline li.ty-text-links__item--submenu, // inline quick links (dropdown mode) popup list
+    li.ty-select-block__list-item // languages+currencies
+    {
+        margin: 0;
+        padding: 0;
+        display: block;
+    }
+    .ty-text-links-wrapper li.ty-text-links__item:not(.ty-text-links__item--inline):not(.ty-text-links__item--submenu), // inline quick links (plain-list mode) & raise priority
+    .ty-text-links-wrapper li.ty-text-links__item--inline // inline quick links (dropdown mode) & raise priority
+    {
+        @media (max-width: 1024px) {
+            display: block;
+        }
+    }
+
+    // sublist
+    .ty-text-links-wrapper li.ty-text-links__item:not(.ty-text-links__item--inline):not(.ty-text-links__item--submenu) // inline quick links (plain-list mode) & raise priority
+    {
+        ul.ty-text-links {
+            @media (max-width: 1024px) {
+                display: block;
+                margin-inline-start: calc(@var--top-panel-link-btn-_padding-inline * 1.5);
+            }
+        }
+    }
+    .top-quick-links .ty-text-links-wrapper li.ty-text-links__item--inline.ty-text-links__subitems.ty-level-0 > ul.ty-text-links // inline quick links (dropdown mode) popup list & raise priority
+    {
+        // reset dropdown
+        @media (max-width: 1024px) {
+            background: initial;
+            box-shadow: initial;
+            border-radius: initial;
+            position: initial;
+            top: initial;
+            right: initial;
+            min-width: initial;
+            max-width: initial;
+            padding: initial;
+            margin-inline-start: calc(@var--top-panel-link-btn-_padding-inline * 1.5);
+            display: block;
+
+            &::before,
+            &::after {
+                content: none;
+            }
+
+            ul.ty-text-links {
+                margin-inline-start: @var--top-panel-link-btn-_padding-inline;
+            }
+        }
+    }
+
+    // link
+    .ty-text-links__item--submenu a.ty-text-links__a--submenu, // inline quick links (dropdown mode) popup head
+    .ty-select-block__list-item a.ty-select-block__list-a // languages+currencies
+    {
+        .mxn--top-panel__dropdown__link();
+    }
+    li.ty-text-links__item:not(.ty-text-links__item--inline):not(.ty-text-links__item--submenu) a.ty-text-links__a, // inline quick links (plain-list mode)
+    li.ty-text-links__item--inline a.ty-text-links__a--inline // inline quick links (dropdown mode)
+    {
+        @media (max-width: 1024px) {
+            .mxn--top-panel__dropdown__link();
+        }
+    }
+
+    // link active|current decor
+    .ty-text-links__item--submenu.active a.ty-text-links__a--submenu, // inline quick links (dropdown mode) popup head
+    .ty-select-block__list-item a.ty-select-block__list-a.is-active // languages+currencies
+    {
+        .mxn--top-panel-dropdown-_text-color_-active();
+    }
+    li.ty-text-links__item:not(.ty-text-links__item--inline):not(.ty-text-links__item--submenu).active a.ty-text-links__a, // inline quick links (plain-list mode)
+    li.ty-text-links__item--inline.active a.ty-text-links__a--inline // inline quick links (dropdown mode)
+    {
+        @media (max-width: 1024px) {
+            .mxn--top-panel-dropdown-_text-color_-active();
+        }
+    }
+
+    // link hover decor
+    .ty-text-links__item--submenu a.ty-text-links__a--submenu, // inline quick links (dropdown mode) popup head
+    .ty-select-block__list-item a.ty-select-block__list-a // languages+currencies
+    {
+        &:hover {
+            .mxn--top-panel-dropdown-_text-color_-hover();
+        }
+    }
+    li.ty-text-links__item:not(.ty-text-links__item--inline):not(.ty-text-links__item--submenu) a.ty-text-links__a, // inline quick links (plain-list mode)
+    li.ty-text-links__item--inline a.ty-text-links__a--inline // inline quick links (dropdown mode)
+    {
+        @media (max-width: 1024px) {
+            &:hover {
+                .mxn--top-panel-dropdown-_text-color_-hover();
+            }
+        }
+    }
+}
+/* [[[[ END ]]]] dropdown
+==============================================================================*/
+
+/* [[[[[ BEGIN ]]]]] Top Panel region
+##############################################################################*/
+
+
+
+
+
+
+
+/*##############################################################################
+   [[[[[ BEGIN ]]]]] Quick Links block
+##############################################################################*/
+
+/*==============================================================================
+   [[[[ BEGIN ]]]] location Top Panel
+==============================================================================*/
+.tygh-top-panel .top-quick-links // increase precedence
+{
+    .ty-text-links-wrapper {
+        border: 0 none;
+
+        @media (max-width: 1024px)
+        {
+            position: relative;
+        }
+    }
+
+    .ty-text-links-btn {
+        display: none;
+
+        @media (max-width: 1024px) {
+            display: flex;
+
+            &.visible-phone { // override other harmful rule
+                display: flex !important;
+            }
+            &:not(.open) {
+                & ~ ul.ty-text-links
+                {
+                    display: none !important;
+                }
+            }
+        }
+
+        &::before,
+        &::after {
+            content: none;
+        }
+
+        .ty-icon-short-list {
+            font-family: 'uni2-icons', sans-serif;
+            font-size: 20px;
+            padding: 0; // reset
+
+            &:before {
+                content: "\e977";
+            }
+        }
+    }
+
+    // list level 0
+    .ty-text-links-wrapper > ul.ty-text-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex !important;
+        gap: 1px;
+
+        // plain list mode
+        &:not(.ty-text-links_show_inline) {}
+
+        // dropdown mode
+        &.ty-text-links_show_inline {
+            border-radius: 0;
+        }
+    }
+
+    li.ty-text-links__item {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: static;
+        flex: 0 0 auto;
+
+        &.ty-level-0 {}
+        &.ty-level-1 {}
+
+        // plain list mode
+        &:not(.ty-text-links__item--inline):not(.ty-text-links__item--submenu) {
+            display: flex; // lining sublist items
+            align-content: center;
+            align-items: center;
+            gap: 1px;
+
+            ul.ty-text-links {
+                display: contents;
+            }
+        }
+
+        // dropdown mode
+        &.ty-text-links__item--inline {
+            display: block;
+
+            &.ty-text-links__subitems.ty-level-0 {
+                position: relative;
+
+                @media (min-width: 1025px) {
+                    .no-touch &:hover {
+                        & > ul.ty-text-links {
+                            display: block;
+                        }
+
+                        a.ty-text-links__a--subitems {
+                            &:after {
+                                content: "\e904";
+                            }
+                        }
+                    }
+                }
+
+                a.ty-text-links__a--subitems // inline quick links (dropdown mode) popup head
+                {
+                    &:after {
+                        @media (min-width: 1025px) {
+                            .ut2-icon();
+                            content: "\e908";
+                            font-size: calc(~'var(--link-font-size) + 2px');
+                            color: @top_panel_text;
+                            margin-inline-start: 2px;
+                            margin-inline-end: -4px;
+                        }
+                    }
+                }
+
+                & > ul.ty-text-links {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+/* [[[[ END ]]]] location Top Panel
+==============================================================================*/
+
+
+
+
+
+/*==============================================================================
+   [[[[ BEGIN ]]]] location Footer
+==============================================================================*/
+.tygh-footer .ty-text-links-wrapper {
+    border: 0 none;
+
+    .ty-text-links-btn {
+        display: none;
+    }
+
+    .ty-text-links {
+        //reset rule .ty-text-links_show_inline
+        position: static;
+        left: initial;
+        right: initial;
+        z-index: initial;
+        min-width: initial;
+        display: block;
+        background: none;
+        border: 0 none;
+    }
+
+    .ty-text-links__a {
+        display: inline;
+
+        .bg_color() when (lightness(@footer_bg) < 90%) {
+            color: rgba(255, 255, 255, 0.75);
+            &:hover:not(p):not(li) {
+                color: rgba(255, 255, 255, 0.85);
+            }
+        }
+        .bg_color();
+    }
+}
+/* [[[[ END ]]]] location Footer
+==============================================================================*/
+
+/* [[[[[ BEGIN ]]]]] Quick Links block
+##############################################################################*/
+
+
+
+
+
+
+
+/*##############################################################################
+   [[[[[ BEGIN ]]]]] Currencies + Languages blocks (Top Pnel. Fly Menu)
+##############################################################################*/
+.top-currencies,
+.top-languages {
+    margin: 0;
+}
+
+/*==============================================================================
+   [[[[ BEGIN ]]]] Top Pnel only
+==============================================================================*/
+.tygh-top-panel {
+    .ab__ut2--currencies,
+    .ab__ut2--languages {
+        margin: 0;
+        display: flex;
+        flex-wrap: nowrap;
+        column-gap: var(--gap-xxs);
+
+        &::before,
+        &::after {
+            content: none;
+        }
+
+        // languages+currencies caption text
+        .ty-select-block__txt {
+            @media (max-width: 834px) {
+                display: none;
+            }
+        }
+    }
+}
+
+.ab__ut2--languages.ab__ut2--languages_mode_plain .ab__ut2--languages__plain-list,
+.ab__ut2--currencies.ab__ut2--currencies_mode_plain .ab__ut2--currencies__plain-list {
+    .tygh-top-panel & {
+        @media (max-width: 1024px) {
+            display: none;
+        }
+    }
+}
+
+.ab__ut2--languages .ab__ut2--languages__plain-list,
+.ab__ut2--currencies .ab__ut2--currencies__plain-list {
+    .tygh-top-panel & {
+        margin: 0;
+        white-space: nowrap;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 1px;
+
+        &::before,
+        &::after {
+            content: none;
+        }
+    }
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   [[[ BEGIN ]]] dropdown head & popup/list stuffing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.tygh-top-panel {
+
+    .ab__ut2--select-block__head {
+        &:not(.open)
+        {
+            & + .ab__ut2--select-block__popup
+            {
+                display: none;
+            }
+        }
+
+        &::before,
+        &::after
+        {
+            // hide duplicate corner
+            z-index: @z-index + 4;
+            right: 9px;
+            display: none;
+        }
+    }
+
+    .ab__ut2--languages__dropdown {
+        &.ab__ut2--languages__dropdown_format_icon {
+            .ty-flag {
+                margin-inline-end: initial;
+            }
+
+            .ty-select-block__list-a {
+                justify-content: center;
+            }
+
+            .ab__ut2--select-block__popup__text {
+                display: none;
+            }
+        }
+
+        &:not(.ab__ut2--languages__dropdown_format_icon) {
+            .ab__ut2--select-block__head__text__code {
+                @media (max-width: 576px) {
+                    display: inline;
+                }
+            }
+        }
+
+        .ab__ut2--select-block__head__text__name,
+        .ab__ut2--select-block__head__text__symbol ins,
+        .ab__ut2--select-block__head__text__code ins
+        {
+            @media (max-width: 576px) {
+                display: none;
+            }
+        }
+    }
+}
+/* [[[ END ]]] dropdown head & popup/list stuffing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/* [[[[ END ]]]] Top Pnel only
+==============================================================================*/
+
+
+
+
+
+/*==============================================================================
+   [[[[ BEGIN ]]]] global
+==============================================================================*/
+.ut2-languages.ab__ut2--languages.ab__ut2--languages_mode_dropdown .ab__ut2--languages__plain-list,
+.ut2-currencies.ab__ut2--currencies.ab__ut2--currencies_mode_dropdown .ab__ut2--currencies__plain-list {
+    display: none;
+}
+
+.ut2-languages.ab__ut2--languages.ab__ut2--languages_mode_plain .ab__ut2--languages__dropdown,
+.ut2-currencies.ab__ut2--currencies.ab__ut2--currencies_mode_plain .ab__ut2--currencies__dropdown {
+    display: none;
+
+    .tygh-top-panel & {
+        @media (max-width: 1024px) {
+            display: block;
+        }
+    }
+}
+
+.ab__ut2--currencies,
+.ab__ut2--languages {
+    .ty-flag {
+        margin: 0;
+        margin-inline: 0 var(--gap-xxs);
+        flex-shrink: 0;
+    }
+    .ab__ut2--select-block__popup .ty-flag {
+        margin-block-start: 1px;
+    }
+}
+
+.ab__ut2--select-block__popup__text {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    width: max-content;
+}
+
+.ab__ut2--select-block__popup__text__code,
+.ab__ut2--select-block__popup__text__symbol {
+    padding-inline-start: var(--gap-xxs);
+    margin-inline-start: auto;
+}
+.ab__ut2--select-block__head__text__symbol,
+.ab__ut2--select-block__head__text__code,
+.ab__ut2--select-block__popup__text__code,
+.ab__ut2--select-block__popup__text__symbol
+{
+    ins {
+        font-style: normal;
+        text-decoration: none;
+    }
+}
+
+.ab__ut2--languages__dropdown_format_icon,
+.ab__ut2--currencies__dropdown_format_symbol {
+    .ab__ut2--select-block__popup__text__code,
+    .ab__ut2--select-block__popup__text__symbol {
+        margin-inline-start: initial;
+        padding-inline-start: initial;
+    }
+}
+
+.ab__ut2--currencies__dropdown_format_symbol {
+    .ab__ut2--select-block__popup__text {
+        justify-content: center;
+    }
+}
+
+.ab__ut2--select-block__head__text__code,
+.ab__ut2--select-block__popup__text__code {
+    display: none;
+}
+/* [[[[ END ]]]] global
+==============================================================================*/
+
+/* [[[[[ BEGIN ]]]]] Currencies + Languages blocks (Top Pnel. Fly Menu)
+##############################################################################*/

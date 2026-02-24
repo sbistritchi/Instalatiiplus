@@ -1,0 +1,121 @@
+2025-06-23 11:16:56: Downloading "core" upgrade package
+2025-06-23 11:17:00: Upgrade package has been downloaded and ready to install
+
+
+################################################################################
+################################################################################
+2025-09-14 20:21:03: Starting installation of the "core" upgrade package
+2025-09-14 20:21:03: Upgrading version 4.18.3 to 4.18.4
+2025-09-14 20:21:03: Running as user "instala5"
+2025-09-14 20:21:03: Storing entry point files permissions...
+2025-09-14 20:21:03: index.php ==> 33188 (-rw-r--r--)
+2025-09-14 20:21:03: admin.php ==> 33188 (-rw-r--r--)
+2025-09-14 20:21:03: api.php ==> 33188 (-rw-r--r--)
+2025-09-14 20:21:03:  ==> 16872 (drwxr-x---)
+2025-09-14 20:21:03: Executing pre-upgrade validators
+2025-09-14 20:21:03: Found 0 validators at package
+2025-09-14 20:21:03: Executing "collisions" validator
+2025-09-14 20:21:07: Executing "permissions" validator
+2025-09-14 20:21:07: Executing "restore" validator
+2025-09-14 20:21:07: Backup filename is "upg_core_4.18.3-4.18.4_14Sep2025_202103"
+2025-09-14 20:21:07: Preparing restore script
+2025-09-14 20:21:07: Upgrades directory permissions: drwxr-xr-x instala5:instala5
+2025-09-14 20:21:07: Source restore script permissions: -rw-r--r-- instala5:instala5
+2025-09-14 20:21:07: Created directory for restore script at "/home/instala5/public_html/upgrades/core_4.18.3-4.18.4/"
+2025-09-14 20:21:07: Directory permissions: drwxr-xr-x instala5:instala5
+2025-09-14 20:21:07: Created restore script at "/home/instala5/public_html/upgrades/core_4.18.3-4.18.4/restore_2025-09-14_20-21-03.php"
+2025-09-14 20:21:07: Restore script permissions: -rw-r--r-- instala5:instala5
+2025-09-14 20:21:07: Correcting target restore script directory permissions...
+2025-09-14 20:21:07: ----------
+2025-09-14 20:21:07: Changing permissions of "/home/instala5/public_html/upgrades/core_4.18.3-4.18.4/" to 755
+2025-09-14 20:21:07: Using chmod()... OK
+2025-09-14 20:21:07: ----------
+2025-09-14 20:21:07: Target restore script directory permissions: drwxr-xr-x instala5:instala5
+2025-09-14 20:21:07: Correcting upgrades directory permissions...
+2025-09-14 20:21:07: ----------
+2025-09-14 20:21:07: Changing permissions of "/home/instala5/public_html/upgrades" to 755
+2025-09-14 20:21:07: Using chmod()... OK
+2025-09-14 20:21:07: ----------
+2025-09-14 20:21:07: Upgrades directory permissions: drwxr-xr-x instala5:instala5
+2025-09-14 20:21:07: Checking restore script availability via HTTP/HTTPS
+2025-09-14 20:21:07: Executing pre-upgrade script "/home/instala5/public_html/var/upgrade/packages/core/content/scripts/pre_script.php"
+2025-09-14 20:21:08: Pre-upgrade script executed successfully
+2025-09-14 20:21:08: Closing storefront
+2025-09-14 20:21:08: Backing up files and database
+2025-09-14 20:21:08: backup via mysqldump is disabled by config
+2025-09-14 20:21:52: Backup created at "/home/instala5/public_html/var/backups/upg_core_4.18.3-4.18.4_14Sep2025_202103.zip"
+2025-09-14 20:21:52: Sending upgrade information e-mail to: info@smartheatinstal.ro
+2025-09-14 20:21:52: E-mail was successfully sent
+2025-09-14 20:21:52: Executing 6 migrations found at package
+2025-09-14 20:21:52: Phinx by CakePHP - https://phinx.org.
+2025-09-14 20:21:52: 
+2025-09-14 20:21:52: using config file app/Tygh/UpgradeCenter/Migrations/config.migrations.php
+2025-09-14 20:21:52: using config parser php
+2025-09-14 20:21:52: using migration paths 
+2025-09-14 20:21:52:  - /home/instala5/public_html/var/upgrade/packages/core/content/migrations
+2025-09-14 20:21:52: using environment development
+2025-09-14 20:21:52: using adapter mysqli
+2025-09-14 20:21:52: using database instala5_cscart
+2025-09-14 20:21:52: ordering by creation time
+2025-09-14 20:21:52: 
+2025-09-14 20:21:52:  == 20240324112113 CoreRenameAuthorizeNetAimPayment: migrating
+2025-09-14 20:21:52:  == 20240324112113 CoreRenameAuthorizeNetAimPayment: migrated 0.0008s
+2025-09-14 20:21:52: 
+2025-09-14 20:21:52:  == 20240415172711 CoreAddNewAuthorizeNetApiPaymentProcessor: migrating
+2025-09-14 20:21:52:  == 20240415172711 CoreAddNewAuthorizeNetApiPaymentProcessor: migrated 0.0006s
+2025-09-14 20:21:52: 
+2025-09-14 20:21:52:  == 20240925223416 AddonsRusRussianpostUpdateForm7pLangvar: migrating
+2025-09-14 20:21:52:  == 20240925223416 AddonsRusRussianpostUpdateForm7pLangvar: migrated 0.0006s
+2025-09-14 20:21:52: 
+2025-09-14 20:21:52:  == 20241205110248 AddonsEmailMarketingDeleteMadmimiLangvarsAndSettings: migrating
+2025-09-14 20:21:52:  == 20241205110248 AddonsEmailMarketingDeleteMadmimiLangvarsAndSettings: migrated 0.0052s
+2025-09-14 20:21:52: 
+2025-09-14 20:21:52:  == 20241205181422 AddonsNewslettersRenameAgreementTextShortSubscribeToNewsletterLangvar: migrating
+2025-09-14 20:21:52:  == 20241205181422 AddonsNewslettersRenameAgreementTextShortSubscribeToNewsletterLangvar: migrated 0.0013s
+2025-09-14 20:21:52: 
+2025-09-14 20:21:52:  == 20250129054724 AddonsRusTaxesAddNewTaxes: migrating
+2025-09-14 20:21:52:  == 20250129054724 AddonsRusTaxesAddNewTaxes: migrated 0.0101s
+2025-09-14 20:21:52: 
+2025-09-14 20:21:52: All Done. Took 0.0321s
+2025-09-14 20:21:52: Migrations were executed successfully
+2025-09-14 20:21:52: Copying package files
+2025-09-14 20:21:56: Deleting files removed at new version
+2025-09-14 20:21:56: Processing themes files
+2025-09-14 20:21:56: Cleaning cache
+2025-09-14 20:21:56: Installing languages using upgraded *.po files
+2025-09-14 20:21:56: Already installed languages: ro
+2025-09-14 20:21:56: Languages to be installed: ar, cs, da, de, el, en, es, fa, fi, fr, he, hu, id, it, ja, ko, nl, no, pl, pt, ro, ru, sv, tr, uk, uz, zh
+2025-09-14 20:21:56: Installing "ro" language... OK
+2025-09-14 20:21:58: Executing post-upgrade script "/home/instala5/public_html/var/upgrade/packages/core/content/scripts/post_script.php"
+2025-09-14 20:21:58: Post-upgrade script executed successfully
+2025-09-14 20:21:58: Sending upgrade information e-mail to: info@smartheatinstal.ro
+2025-09-14 20:21:58: PHP Deprecated: strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated in /home/instala5/public_html/app/addons/pdf_documents/src/HookHandlers/OrdersHookHandler.php on line 265
+2025-09-14 20:21:58: Upgrade information e-mail was successfully sent
+2025-09-14 20:21:58: Cleaning cache
+2025-09-14 20:21:58: Saving upgrade information to DB
+2025-09-14 20:21:58: Sending statistics
+2025-09-14 20:21:59: Deleting package contents
+2025-09-14 20:21:59: Restoring entry point files permissions...
+2025-09-14 20:21:59: index.php ==> 33188 (-rw-r--r--)
+2025-09-14 20:21:59: ----------
+2025-09-14 20:21:59: Changing permissions of "/home/instala5/public_html/index.php" to 100644
+2025-09-14 20:21:59: Using chmod()... OK
+2025-09-14 20:21:59: ----------
+2025-09-14 20:21:59: admin.php ==> 33188 (-rw-r--r--)
+2025-09-14 20:21:59: ----------
+2025-09-14 20:21:59: Changing permissions of "/home/instala5/public_html/admin.php" to 100644
+2025-09-14 20:21:59: Using chmod()... OK
+2025-09-14 20:21:59: ----------
+2025-09-14 20:21:59: api.php ==> 33188 (-rw-r--r--)
+2025-09-14 20:21:59: ----------
+2025-09-14 20:21:59: Changing permissions of "/home/instala5/public_html/api.php" to 100644
+2025-09-14 20:21:59: Using chmod()... OK
+2025-09-14 20:21:59: ----------
+2025-09-14 20:21:59:  ==> 16872 (drwxr-x---)
+2025-09-14 20:21:59: ----------
+2025-09-14 20:21:59: Changing permissions of "/home/instala5/public_html/" to 40750
+2025-09-14 20:21:59: Using chmod()... OK
+2025-09-14 20:21:59: ----------
+2025-09-14 20:21:59: Upgrade completed!
+2025-12-01 13:39:58: Downloading "core" upgrade package
+2025-12-01 13:40:04: Upgrade package has been downloaded and ready to install

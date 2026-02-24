@@ -1,0 +1,460 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+    <id>ss_baselinker</id>
+    <version>1.1.5.3</version>
+    <priority>10000</priority>
+    <position>10000</position>
+    <status>active</status>
+    <commit>a3c1c40</commit>
+    <supplier>SoftSolid</supplier>
+    <supplier_link>https://cs-cart.pl</supplier_link>
+    <supplier_page>addons.manage?supplier=SoftSolid</supplier_page>
+    <authors>
+        <author>
+            <name>SoftSolid</name>
+            <email>office@cs-cart.com.pl</email>
+            <url>https://cs-cart.pl</url>
+            <phone>+48698780870, +48661661964</phone>
+        </author>
+    </authors>
+    <has_icon>true</has_icon>
+    <default_language>en</default_language>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <compatibility>
+        <!--<core_version>
+            <min></min>
+            <max></max>
+        </core_version>-->
+        <core_edition></core_edition>
+        <!--<php_version>
+            <min></min>
+            <max></max>
+        </php_version>-->
+        <conflicts></conflicts>
+    </compatibility>
+    <settings edition_type="ROOT,VENDOR,STOREFRONT" layout="separate">
+        <sections>
+            <section id="ss_baselinker_general">
+                 <items>
+                    <item id="ss_bl_register">
+                        <type>info</type>
+                        <handler>fn_ss_baselinker_register_link</handler>
+                    </item>
+                    <item id="ss_baselinker_password">
+                        <type>input</type>
+                        <default_value></default_value>
+                    </item>
+                    <item id="ss_baselinker_data_exchange">
+                        <type>info</type>
+                        <handler>fn_ss_baselinker_data_exchange_link</handler>
+                    </item>
+                    <!--<item id="ss_bl_disable_devel">
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                    </item>
+                    <item id="ss_bl_disable_display_errors">
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                    </item>-->
+                    <item id="ss_bl_enable_front_test">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="ss_bl_logger_type">
+                        <type>selectbox</type>
+                        <default_value>human</default_value>
+                        <variants>
+                            <item id="human">
+                            </item>
+                            <item id="devel">
+                            </item>
+                        </variants>
+                    </item>
+                    <item id="ss_bl_weight_converter">
+                        <type>input</type>
+                        <default_value>1</default_value>
+                    </item>
+                    <item id="ss_bl_log_limit">
+                        <type>input</type>
+                        <default_value>50</default_value>
+                    </item>
+                </items>
+            </section>
+            <section id="ss_baselinker_profile_fields">
+                 <items>
+                    <item id="ss_baselinker_b_nip">
+                        <type>input</type>
+                        <default_value>b_nip</default_value>
+                    </item>
+                    <item id="ss_baselinker_b_company">
+                        <type>input</type>
+                        <default_value>b_firma</default_value>
+                    </item>
+                    <item id="ss_baselinker_s_company">
+                        <type>input</type>
+                        <default_value>s_firma</default_value>
+                    </item>
+                    <item id="ss_baselinker_want_invoice">
+                        <type>input</type>
+                        <default_value>b_invoice</default_value>
+                    </item>
+                    <item id="ss_baselinker_b_region">
+                        <type>input</type>
+                        <default_value>b_state</default_value>
+                    </item>
+                    <item id="ss_baselinker_s_region">
+                        <type>input</type>
+                        <default_value>s_state</default_value>
+                    </item>
+                </items>
+            </section>
+            <section id="ss_baselinker_send_products">
+                <items>
+                    <item id="ss_baselinker_export_statuses">
+                        <type>multiple checkboxes</type>
+                        <default_value><![CDATA[#M#A=Y&H=Y]]></default_value>
+                        <variants>
+                            <item id="A"></item>
+                            <item id="H"></item>
+                            <item id="D"></item>
+                        </variants>
+                    </item>
+                    <item id="ss_baselinker_option_type">
+                        <type>selectbox</type>
+                        <default_value>variants</default_value>
+                        <variants>
+                            <item id="variants">
+                            </item>
+                            <item id="combinations">
+                            </item>
+                        </variants>
+                    </item>
+                    <item id="ss_baselinker_promotion_price">
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                    </item>
+                    <item id="ss_baselinker_remove_image_company_id">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="ss_baselinker_bl_names">
+                        <type>info</type>
+                        <handler>fn_ss_baselinker_bl_names</handler>
+                    </item>
+                    <item id="ss_baselinker_use_bl_name">
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                    </item>
+                    <item id="ss_baselinker_use_bl_description">
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                    </item>
+                    <item id="ss_baselinker_use_bl_name_productslist">
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                    </item>
+                    <!-- <item id="ss_baselinker_use_bl_description_productslist">
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                    </item>-->
+                    <item id="ss_baselinker_product_language">
+                        <type>selectbox</type>
+                    </item>
+                    <item id="ss_baselinker_products_currency">
+                        <type>selectbox</type>
+                    </item>
+                </items>
+            </section>
+            <section id="ss_baselinker_get_products">
+                <items>
+                    <item id="ss_bl_csmv_import_prod_status">
+                        <type>selectbox</type>
+                        <default_value>A</default_value>
+                        <variants>
+                            <item id="A"></item>
+                            <item id="D"></item>
+                            <item id="H"></item>
+                        </variants>
+                    </item>
+                    <item id="ss_bl_csmv_update_prices">
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                    </item>
+                    <item id="ss_bl_csmv_tax_id">
+                        <type>selectbox</type>
+                    </item>
+                    <item id="ss_bl_csmv_category_ids">
+                        <type>input</type>
+                        <default_value>0</default_value>
+                    </item>
+                    <item id="ss_bl_csmv_import_cat_status">
+                        <type>selectbox</type>
+                        <default_value>A</default_value>
+                        <variants>
+                            <item id="A"></item>
+                            <item id="D"></item>
+                            <item id="H"></item>
+                        </variants>
+                    </item>
+                    <item id="ss_bl_csmv_product_lang">
+                        <type>selectbox</type>
+                    </item>
+                    <item id="ss_bl_csmv_import_features">
+                        <type>selectbox</type>
+                        <default_value>existing</default_value>
+                        <variants>
+                            <item id="none"></item>
+                            <item id="existing"></item>
+                            <item id="all"></item>
+                        </variants>
+                    </item>
+                    <item id="ss_bl_csmv_feature_sep">
+                        <type>selectbox</type>
+                        <default_value>semicolon</default_value>
+                        <variants>
+                            <item id="comma"></item>
+                            <item id="semicolon"></item>
+                            <item id="colon"></item>
+                        </variants>
+                    </item>
+                    <item id="ss_bl_csmv_ean_type">
+                        <type>selectbox</type>
+                        <default_value>feature</default_value>
+                        <variants>
+                            <item id="pcode">
+                            </item>
+                            <item id="feature">
+                            </item>
+                        </variants>
+                    </item>
+                    <item id="ss_bl_csmv_feature_ean">
+                        <type>input</type>
+                        <default_value>EAN</default_value>
+                    </item>
+                </items>
+            </section>
+            <section id="ss_baselinker_products_codes">
+                <items>
+                    <item id="ss_baselinker_feature_brand">
+                        <type>input</type>
+                        <default_value>Brand</default_value>
+                    </item>
+                    <item id="ss_baselinker_ean_type">
+                        <type>selectbox</type>
+                        <default_value>feature</default_value>
+                        <variants>
+                            <item id="pcode">
+                            </item>
+                            <item id="feature">
+                            </item>
+                        </variants>
+                    </item>
+                    <item id="ss_baselinker_feature_ean">
+                        <type>input</type>
+                        <default_value>EAN</default_value>
+                    </item>
+                    <item id="ss_baselinker_sku_type">
+                        <type>selectbox</type>
+                        <default_value>pcode</default_value>
+                        <variants>
+                            <item id="pcode">
+                            </item>
+                            <item id="features">
+                            </item>
+                        </variants>
+                    </item>
+                    <item id="ss_baselinker_feature_sku">
+                        <type>input</type>
+                        <default_value></default_value>
+                    </item>
+                    <item id="ss_bl_main_sku_variants">
+                        <type>input</type>
+                        <default_value></default_value>
+                    </item>
+                </items>
+            </section>
+            <section id="ss_baselinker_send_bl">
+                <items>
+                    <item id="ss_baselinker_paid_statuses">
+                        <type>multiple checkboxes</type>
+                    </item>
+                    <item id="ss_baselinker_cod_payment">
+                        <type>multiple checkboxes</type>
+                    </item>
+                    <item id="ss_baselinker_orders_currency">
+                        <type>selectbox</type>
+                    </item>
+                    <item id="ss_bl_orders_to_bl_tax">
+                        <type>input</type>
+                        <default_value></default_value>
+                    </item>
+                    <item id="ss_bl_csmv_bl_pay_surcharge">
+                        <type>selectbox</type>
+                        <default_value>feature</default_value>
+                        <variants>
+                            <item id="separate">
+                            </item>
+                            <item id="shipping">
+                            </item>
+                        </variants>
+                    </item>
+                    <item id="sbotb_statuses_to_send">
+                        <type>multiple checkboxes</type>
+                    </item>
+                    <item id="sbotb_discount_sku">
+                        <type>input</type>
+                        <default_value>DISCOUNT</default_value>
+                    </item>
+                    <item id="sbotb_discount_ean">
+                        <type>input</type>
+                        <default_value>1234567890123</default_value>
+                    </item>
+                    <item id="sbotb_order_get_last_sync">
+                        <type>hidden</type>
+                    </item>
+                </items>
+            </section>
+            <section id="ss_baselinker_get_bl">
+                <items>
+                    <item id="ss_baselinker_default_shipping_id">
+                        <type>selectbox</type>
+                    </item>
+                    <item id="ss_baselinker_default_payment_id">
+                        <type>selectbox</type>
+                    </item>
+                    <item id="ss_baselinker_pay_status">
+                        <type>selectbox</type>
+                    </item>
+                    <item id="ss_baselinker_apply_catalog_promotions">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="ss_baselinker_apply_cart_promotions">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="ss_baselinker_update_orders">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                </items>
+            </section>
+            <section id="ss_baselinker_logs">
+                <items>
+                    <item id="ss_bl_logs_supportedmethods">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="ss_bl_logs_fileversion">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="ss_bl_logs_productscategories">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="ss_bl_logs_productslist">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="ss_bl_logs_productadd">
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                    </item>
+                    <item id="ss_bl_logs_categoryadd">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="ss_bl_logs_productdata">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="ss_bl_logs_productsprices">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                     <item id="ss_bl_logs_productsquantity">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="ss_bl_logs_productsquantityupdate">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="ss_bl_logs_productspriceupdate">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="ss_bl_logs_ordersget">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                     <item id="ss_bl_logs_statuseslist">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="ss_bl_logs_deliverymethodslist">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="ss_bl_logs_paymentmethodslist">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="ss_bl_logs_orderadd">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="ss_bl_logs_orderupdate">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item edition_type="MVE:STOREFRONT" id="ss_bl_logs_mp_categorieslist">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item edition_type="MVE:STOREFRONT" id="ss_bl_logs_mp_categorydetails">
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                </items>
+            </section>
+            <section id="ss_baselinker_api">
+                <items>
+                    <item id="ss_baselinker_token">
+                        <type>textarea</type>
+                    </item>
+                </items>
+            </section>
+            <section id="ss_baselinker_test_functions">
+                <items>
+                    <item id="ss_baselinker_test_functions">
+                        <type>info</type>
+                        <handler>fn_ss_baselinker_test_functions</handler>
+                    </item>
+                </items>
+            </section>
+            <section id="ss_baselinker_stats">
+                <items>
+                    <item id="ss_baselinker_stats">
+                        <type>info</type>
+                        <handler>fn_ss_baselinker_get_stats</handler>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <queries>
+        <item for="install" type="file">database/ss_baselinker_fields_send_install.sql</item>
+        <item for="uninstall" type="file">database/ss_baselinker_fields_send_uninstall.sql</item>
+        <item for="install" type="file">database/ss_baselinker_vendor_permissions_install.sql</item>
+        <item for="uninstall" type="file">database/ss_baselinker_vendor_permissions_uninstall.sql</item>
+        <item for="install" type="file">database/ss_baselinker_extra_fields_install.sql</item>
+        <item for="install" type="file">database/ss_baselinker_extra_fields_demo.sql</item>
+        <item for="uninstall" type="file">database/ss_baselinker_extra_fields_uninstall.sql</item>
+    </queries>
+    <functions>
+        <item for="install">fn_ss_baselinker_install</item>
+        <item for="uninstall">fn_ss_baselinker_uninstall</item>
+    </functions>
+</addon>
