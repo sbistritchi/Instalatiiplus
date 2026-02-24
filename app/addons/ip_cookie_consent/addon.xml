@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+    <id>ip_cookie_consent</id>
+    <version>1.0.0</version>
+    <priority>10000</priority>
+    <position>0</position>
+    <status>active</status>
+    <has_icon>N</has_icon>
+    <default_language>ro</default_language>
+
+    <settings edition_type="ROOT">
+        <sections>
+            <section id="general">
+                <items>
+                    <item id="cookie_policy_url">
+                        <type>input</type>
+                        <default_value>/politica-de-cookies</default_value>
+                    </item>
+                    <item id="consent_expiry_days">
+                        <type>input</type>
+                        <default_value>30</default_value>
+                    </item>
+                    <item id="show_settings_button">
+                        <type>selectbox</type>
+                        <default_value>Y</default_value>
+                        <variants>
+                            <item id="Y"></item>
+                            <item id="N"></item>
+                        </variants>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+
+    <functions>
+        <item for="install">fn_ip_cookie_consent_install</item>
+        <item for="uninstall">fn_ip_cookie_consent_uninstall</item>
+    </functions>
+
+    <language_variables>
+        <!-- Addon name & description -->
+        <item lang="ro" id="ip_cookie_consent">Cookie Consent - Instalatii Plus</item>
+        <item lang="ro" id="ip_cookie_consent_description">Modul cookie consent custom cu Google Consent Mode v2 pentru piata romaneasca.</item>
+        <item lang="en" id="ip_cookie_consent">Cookie Consent - Instalatii Plus</item>
+        <item lang="en" id="ip_cookie_consent_description">Custom cookie consent module with Google Consent Mode v2 for Romanian market.</item>
+
+        <!-- Settings labels -->
+        <item lang="ro" id="ip_cc_settings_general">General</item>
+        <item lang="en" id="ip_cc_settings_general">General</item>
+        <item lang="ro" id="ip_cc_cookie_policy_url">Link pagina politica cookies</item>
+        <item lang="en" id="ip_cc_cookie_policy_url">Cookie policy page URL</item>
+        <item lang="ro" id="ip_cc_consent_expiry_days">Zile pana la re-consimtamant</item>
+        <item lang="en" id="ip_cc_consent_expiry_days">Days until re-consent</item>
+        <item lang="ro" id="ip_cc_show_settings_button">Afiseaza buton "Setari cookies" in footer</item>
+        <item lang="en" id="ip_cc_show_settings_button">Show "Cookie settings" button in footer</item>
+        <item lang="ro" id="ip_cc_Y">Da</item>
+        <item lang="en" id="ip_cc_Y">Yes</item>
+        <item lang="ro" id="ip_cc_N">Nu</item>
+        <item lang="en" id="ip_cc_N">No</item>
+
+        <!-- Banner texts RO -->
+        <item lang="ro" id="ip_cc.title">Acest website foloseste cookies</item>
+        <item lang="ro" id="ip_cc.description">Folosim cookie-uri pentru a personaliza continutul si anunturile, pentru a oferi functii de retele sociale si pentru a analiza traficul nostru.</item>
+        <item lang="ro" id="ip_cc.necessary_title">Necesare</item>
+        <item lang="ro" id="ip_cc.necessary_desc">Cookie-urile necesare ajuta la a face un site utilizabil prin activarea functiilor de baza, cum ar fi navigarea in pagina si accesul la zonele securizate ale site-ului.</item>
+        <item lang="ro" id="ip_cc.statistics_title">Statistici</item>
+        <item lang="ro" id="ip_cc.statistics_desc">Cookie-urile de statistica ii ajuta pe proprietarii unui site sa inteleaga modul in care vizitatorii interactioneaza cu site-ul, prin colectarea si raportarea informatiilor in mod anonim.</item>
+        <item lang="ro" id="ip_cc.marketing_title">Marketing</item>
+        <item lang="ro" id="ip_cc.marketing_desc">Cookie-urile de marketing sunt utilizate pentru a-i urmari pe vizitatori pe site-uri web. Intentia este de a afisa reclame relevante si atractive pentru utilizatorul individual.</item>
+        <item lang="ro" id="ip_cc.accept_necessary">Accepta cele necesare</item>
+        <item lang="ro" id="ip_cc.accept_selection">Accepta selectia</item>
+        <item lang="ro" id="ip_cc.accept_all">Accepta toate</item>
+        <item lang="ro" id="ip_cc.read_more">Citeste mai mult</item>
+        <item lang="ro" id="ip_cc.settings_button">Setari cookies</item>
+
+        <!-- Banner texts EN -->
+        <item lang="en" id="ip_cc.title">This website uses cookies</item>
+        <item lang="en" id="ip_cc.description">We use cookies to personalize content and ads, to provide social media features and to analyze our traffic.</item>
+        <item lang="en" id="ip_cc.necessary_title">Necessary</item>
+        <item lang="en" id="ip_cc.necessary_desc">Necessary cookies help make a website usable by enabling basic functions like page navigation and access to secure areas of the website.</item>
+        <item lang="en" id="ip_cc.statistics_title">Statistics</item>
+        <item lang="en" id="ip_cc.statistics_desc">Statistic cookies help website owners to understand how visitors interact with websites by collecting and reporting information anonymously.</item>
+        <item lang="en" id="ip_cc.marketing_title">Marketing</item>
+        <item lang="en" id="ip_cc.marketing_desc">Marketing cookies are used to track visitors across websites. The intention is to display ads that are relevant and engaging for the individual user.</item>
+        <item lang="en" id="ip_cc.accept_necessary">Accept necessary</item>
+        <item lang="en" id="ip_cc.accept_selection">Accept selection</item>
+        <item lang="en" id="ip_cc.accept_all">Accept all</item>
+        <item lang="en" id="ip_cc.read_more">Read more</item>
+        <item lang="en" id="ip_cc.settings_button">Cookie settings</item>
+    </language_variables>
+</addon>
